@@ -84,16 +84,48 @@ def summary_done(n):
     return all(field(body, k) for k in keys)
 
 
+def maker_project(ssot):
+    """'프로젝트 한눈에' 표에서 메이커즈 칸에 ✔가 있는 프로젝트 이름. 표가 없으면 None."""
+    body = section(ssot, "프로젝트 한눈에")
+    rows = table_rows(body)
+    if not rows:
+        return None
+    marked = [r[0] for r in rows if len(r) > 3 and "✔" in r[3]]
+    return marked[0] if len(marked) == 1 else ""
+
+
+def project_block(ssot, name):
+    """'## 프로젝트: 이름' 아래부터 다음 '## ' 제목 전까지."""
+    out, on = [], False
+    for line in ssot.splitlines():
+        if re.match(r"^##\s", line):
+            if on:
+                break
+            if re.sub(r"^##\s+", "", line).strip() == f"프로젝트: {name}":
+                on = True
+            continue
+        if on:
+            out.append(line)
+    return "\n".join(out)
+
+
 def missing(n):
     ssot = read("SSOT.md")
-    s = lambda t: section(ssot, t)
+    me = lambda t: section(ssot, t)  # ① 나, 나의 리듬: SSOT 전체에서
+    name = maker_project(ssot)
+    if name == "":
+        return ["SSOT '프로젝트 한눈에' 표의 메이커즈 칸 ✔ (딱 하나)"]
+    item = project_block(ssot, name) if name else ssot
+    if name and not item.strip():
+        return [f"SSOT '## 프로젝트: {name}' 칸"]
+    s = lambda t: section(item, t)  # ②③④: ✔ 프로젝트 칸에서
     m = []
     if n == 1:
         top = ssot.split("## ①")[0]
         checks = [
             (field(top, "이름"), "SSOT 이름"),
-            (prose_filled(s("한 줄 소개")), "① 한 줄 소개"),
-            (field(s("강점과 자원"), "잘하는 것"), "① 잘하는 것"),
+            (prose_filled(me("한 줄 소개")), "① 한 줄 소개"),
+            (field(me("강점과 자원"), "잘하는 것"), "① 잘하는 것"),
             (prose_filled(s("한 줄 설명")), "② 한 줄 설명"),
             (prose_filled(s("왜 만드나")), "② 왜 만드나"),
             (field(s("해결하고 싶은 문제"), "어떤 불편"), "② 해결하고 싶은 문제"),
@@ -122,7 +154,7 @@ def missing(n):
             for i in range(1, 7)
         )
         checks = [
-            (field(s("나의 리듬"), "일주일에 쓸 수 있는 시간"), "④ 나의 리듬"),
+            (field(me("나의 리듬"), "일주일에 쓸 수 있는 시간"), "④ 나의 리듬"),
             (any_row(s("다음 4주"), 1), "④ 다음 4주 목표"),
             (port_ok, "포트폴리오 6개 섹션"),
             (os.path.exists(os.path.join(ROOT, "portfolio/index.html")), "포트폴리오 웹 페이지"),

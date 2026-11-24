@@ -9,7 +9,7 @@
 - Keep going 루틴 시작하기 ("이번 주 뭐 하지?")
 
 ## 발표 뒤에
-- 피드백은 `records/ideas.md`에, 바뀐 결정은 SSOT ③에
+- 피드백은 프로젝트 기록 폴더의 `ideas.md`에, 바뀐 결정은 SSOT ③에
 - 이제부터는 `weeks/keep-going.md`에 기록해요
 
 ## 인터뷰 메모

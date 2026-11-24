@@ -70,7 +70,7 @@
 - **`mvp/`** 내가 만든 MVP.
 - **`portfolio/`** 발표에 쓰는 포트폴리오.
 
-나머지(`records/`, `_system/`, `CLAUDE.md`)는 Claude가 관리해요. 안 봐도 돼요.
+나머지(`projects/`, `_system/`, `CLAUDE.md`)는 Claude가 관리해요. 안 봐도 돼요.
 
 ---
 
