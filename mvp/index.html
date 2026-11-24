@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>깜빡찰칵 — 깜빡하지 않게 찰칵!</title>
+<meta name="description" content="알림장·단체방 공지를 찍기만 하면 일정으로 등록해 주는 앱, 깜빡찰칵">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf8f3;
+    --surface: #ffffff;
+    --ink: #1f2430;
+    --muted: #5d6472;
+    --line: #e7e1d7;
+    --accent: #ff6b4a;
+    --accent-soft: #ffe9e3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171c;
+      --surface: #1e2129;
+      --ink: #eef0f4;
+      --muted: #a4abb8;
+      --line: #2e323c;
+      --accent: #ff8466;
+      --accent-soft: #3a2621;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", system-ui, sans-serif;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+  header { padding: 72px 0 56px; }
+  .badge {
+    display: inline-block; padding: 4px 12px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent);
+    font-size: 14px; font-weight: 700;
+  }
+  h1 { font-size: clamp(40px, 9vw, 64px); font-weight: 900; line-height: 1.15; margin: 16px 0 12px; letter-spacing: -0.02em; }
+  h1 .snap { color: var(--accent); }
+  .lead { font-size: 19px; color: var(--muted); margin: 0; }
+  section { padding: 48px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 26px; margin: 0 0 20px; letter-spacing: -0.01em; }
+  .story p { margin: 0 0 14px; font-size: 17px; }
+  .story .turn { font-weight: 700; color: var(--accent); }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .steps li {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px;
+  }
+  .num {
+    flex: none; width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-weight: 900;
+    display: grid; place-items: center;
+  }
+  .steps strong { display: block; font-size: 18px; }
+  .steps span { color: var(--muted); }
+  .screens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 560px) { .screens { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; } }
+  figure { margin: 0; }
+  figure img, .placeholder {
+    width: 100%; aspect-ratio: 9 / 19; object-fit: cover;
+    border-radius: 20px; border: 1px solid var(--line); background: var(--surface);
+  }
+  .placeholder { display: grid; place-items: center; color: var(--muted); font-size: 14px; text-align: center; padding: 12px; }
+  figcaption { text-align: center; font-size: 14px; color: var(--muted); margin-top: 8px; }
+  footer { padding: 40px 0 64px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <span class="badge">곧 앱스토어 · 플레이스토어에서 만나요</span>
+      <h1>깜빡하지 않게<br><span class="snap">찰칵!</span></h1>
+      <p class="lead">알림장·단체방 공지를 찍기만 하면, 깜빡찰칵이 일정으로 등록해 줘요.</p>
+    </header>
+
+    <section class="story">
+      <h2>이 앱을 만든 이유</h2>
+      <p>어느 날, 여느 때처럼 아이들을 학교에 보냈습니다. 하필 그날은 특별 행사가 있어 평소와 다른 복장으로 등교해야 하는 날이었어요.</p>
+      <p>며칠 전부터 단체방에 올라왔던 공지를, 쏟아지는 메시지들 사이에서 저희 부부는 놓치고 말았습니다. 맞벌이라 출근길에 다시 집에 들를 수도 없었죠.</p>
+      <p class="turn">그날 전교생 중 평소 옷을 입고 간 건, 저희 두 아이뿐이었습니다.</p>
+      <p>그 마음이 오래 남아서 깜빡찰칵을 만들기 시작했어요. 다른 부모님들께 물어보니, 다들 한 번쯤 놓친 적이 있다고 하셨어요.</p>
+    </section>
+
+    <section>
+      <h2>쓰는 법은 세 단계</h2>
+      <ol class="steps">
+        <li><div class="num">1</div><div><strong>공지를 찰칵</strong><span>알림장이나 단체방 공지를 찍거나 캡처해요.</span></div></li>
+        <li><div class="num">2</div><div><strong>일정으로 등록</strong><span>깜빡찰칵이 공지 속 날짜와 할 일을 일정으로 등록해요.</span></div></li>
+        <li><div class="num">3</div><div><strong>캘린더에서 확인</strong><span>앱 안 캘린더에서 챙길 것을 한눈에 봐요.</span></div></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>앱 화면</h2>
+      <div class="screens">
+        <figure>
+          <img src="screen-1.png" alt="공지를 찍는 화면" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>화면 1<br>(screen-1.png)</div>'">
+          <figcaption>공지 찍기</figcaption>
+        </figure>
+        <figure>
+          <img src="screen-2.png" alt="일정이 등록되는 화면" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>화면 2<br>(screen-2.png)</div>'">
+          <figcaption>일정 등록</figcaption>
+        </figure>
+        <figure>
+          <img src="screen-3.png" alt="캘린더 화면" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>화면 3<br>(screen-3.png)</div>'">
+          <figcaption>캘린더에서 확인</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer>
+      깜빡찰칵 · 초등학생을 키우는 맞벌이 부모를 위해 만들고 있어요.
+    </footer>
+  </div>
+</body>
+</html>
